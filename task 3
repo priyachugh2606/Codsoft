@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        try {
+          
+            String baseCurrency = getUserInput("Enter base currency code (e.g., USD): ");
+            String targetCurrency = getUserInput("Enter target currency code (e.g., EUR): ");
+            double amount = Double.parseDouble(getUserInput("Enter amount in " + baseCurrency + ": "));
+
+            // Fetch exchange rate
+            double exchangeRate = getExchangeRate(baseCurrency, targetCurrency);
+
+            // Convert currency
+            double convertedAmount = amount * exchangeRate;
+
+            // Display result
+            System.out.println("Converted amount: " + convertedAmount + " " + targetCurrency);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String getUserInput(String prompt) throws IOException {
+        System.out.print(prompt);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        return reader.readLine();
+    }
+
+    private static double getExchangeRate(String baseCurrency, String targetCurrency) throws IOException {
+        String apiKey = "YOUR_API_KEY";
+        String apiUrl = "https://api.apis.guru/v2/specs/exchangeratesapi.io/1.0.0/swagger.json";  // Replace with the actual API URL
+
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        StringBuilder response = new StringBuilder();
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+
+        reader.close();
+
+        // Parse the response and extract the exchange rate
+        // Note: You may need to adjust this based on the actual API response format
+        // For simplicity, I'm using a placeholder value here
+        return 1.2;  // Replace with the actual exchange rate
+    }
+}
+        
