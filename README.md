@@ -1,4 +1,3 @@
-
 # Codsoft Java Internship 🚀
 
 Welcome to **Codsoft Java Development Internship** by Priya Chugh ([@priyachugh2606](https://github.com/priyachugh2606)). This repository showcases my progress through a series of practical Java projects designed to build foundational programming skills.
@@ -78,14 +77,6 @@ This project documents personal learning but I'm open to:
 
 * ⭐ Star the repo if you like these projects
 * ✉️ Reach out via GitHub for collaboration or questions
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See `LICENSE` for details.
-
-```
 
 ---
 
